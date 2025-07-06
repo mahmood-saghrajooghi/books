@@ -1,0 +1,48 @@
+---
+# Trigger: only include when the AI thinks the user is pasting a book highlight
+description: USE WHEN the user shares or pastes a highlight from a book to file it appropriately
+globs: books/**/*.md
+alwaysApply: false
+---
+
+# Book-highlight filing guideline
+
+Follow these steps whenever the user provides a book highlight.
+
+1. Identify the book title
+   • It is usually included in the pasted text, e.g.
+     `Atomic Habits — page 23:` or `"Deep Work" – Cal Newport:`
+   • If you cannot determine the title, ask the user.
+
+2. File location & naming
+   • One markdown file per book in the repo-root `books/` folder.
+   • The filename is the kebab-case slug of the title, e.g.
+     `Atomic Habits` → `atomic-habits.md`.
+   • Full relative path example: `books/atomic-habits.md`.
+
+3. File schema
+   ```markdown
+   # <Book title>
+
+   ## Highlights
+
+   - <highlight 1>
+   - <highlight 2>
+   ```
+
+4. Adding a new highlight
+   a. If the file exists, append the highlight as a new bullet under **Highlights**.
+   b. If it does not exist, create the file with the schema above, using the new highlight as the first bullet.
+   c. NEVER delete or rewrite existing bullets—only append.
+   d. Preserve the exact punctuation and line-breaks provided by the user.
+
+5. After updating or creating the file, show the diff / resulting markdown to the user for confirmation.
+
+Notes
+• Do not wrap highlight text in quotes—just `- <text>`.
+• Keep bullets in the order added (newest last).
+• Ask follow-up questions only when the title is ambiguous.
+description:
+globs:
+alwaysApply: false
+---
